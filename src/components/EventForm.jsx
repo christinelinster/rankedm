@@ -1,34 +1,21 @@
 import { useState } from "react";
 import CustomDateInput from "./CustomDateInput";
+import AddArtist from "./AddArtist";
 import "../EventForm.css";
 
 function EventForm(){
     const [eventName, setEventName] = useState("");
     const [eventDate, setEventDate] = useState("");
-  const [location, setLocation] = useState("");
-  const [rating, setRating] = useState("");
-  const [artists, setArtists] = useState([""]);
-  const [friends, setFriends] = useState([""]);
+    const [location, setLocation] = useState("");
+    const [rating, setRating] = useState("");
+    const [artists, setArtists] = useState([]);
 
-    function handleArtistChange(index,value){
-        const newArtists = [...artists];
-    newArtists[index] = value;
-    setArtists(newArtists);
-    }
-
-    function addArtist(){
-        setArtists([...artists, ""]);
-    }
-
-    function handleFriendChange(index,value){
-        const newFriends = [...friends];
-        newFriends[index] = value;
-        setFriends(newFriends);
-    }
-
-    function addFriend(){
-        setFriends([...friends, ""]);
-    }
+    function addArtist(newArtist){
+      setArtists((prevArtists)=>{
+        return [...prevArtists, newArtist]
+      })
+  }
+    
 
     function handleSubmit(e){
         e.preventDefault();
@@ -36,8 +23,7 @@ function EventForm(){
             eventDate,
       location,
       rating,
-      artists: artists.filter((artist) => artist.trim() !== ""),
-      friends: friends.filter((friend) => friend.trim() !== ""),
+      artists
         };
 
         console.log(eventData);
@@ -46,15 +32,15 @@ function EventForm(){
 return(
     <form onSubmit={handleSubmit}>
         <div className="container">
-        <div className="item item-1">
-          <input
+          <div className="item item-1">
+            <input
             className="event-name"
             type="text"
             placeholder="Event Name"
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
           />
-        </div>
+          </div>
 
         <div className="item item-2">
           <label>
@@ -87,30 +73,17 @@ return(
         </div>
         <div className="item item-5">
           <label>Artists</label>
-          {artists.map((artist, index) => (
-            <input
+          <AddArtist/>
+          {artists.map((artist,index)=>{
+            return(
+              <AddArtist
               key={index}
-              type="text"
-              placeholder="Name"
-              value={artist}
-              onChange={(e) => handleArtistChange(index, e.target.value)}
-            />
-          ))}
+              value ={artist}
+              />
+            )
+          })}
           <button className="add-person" type="button" onClick={addArtist}>
             + Add Artist
-          </button>
-          <label>Friends</label>
-          {friends.map((friend, index) => (
-            <input
-              key={index}
-              type="text"
-              placeholder="Name"
-              value={friend}
-              onChange={(e) => handleFriendChange(index, e.target.value)}
-            />
-          ))}
-          <button className="add-person" type="button" onClick={addFriend}>
-            + Add Friend
           </button>
         </div>
 
