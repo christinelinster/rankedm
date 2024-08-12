@@ -13,4 +13,10 @@ html {
 
 body {
   background-color: #ffe8c5;
+  padding-top: 123px;
 }
+
+.event-list{
+  padding: 50px 60px;
+}
+
