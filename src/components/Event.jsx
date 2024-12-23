@@ -13,7 +13,7 @@ function Event({ eventName, eventDate, location, rating, artists }){
             <p className="event-detail"> <PlaceIcon fontSize="small"/>{location}</p>
             <p className="event-detail"> <CalendarMonthIcon fontSize="small"/> {eventDate}</p>
             </div>
-            <p className='event-rating'>{rating}</p>
+            <p className='event-rating'>{rating+".0"}</p>
         </div>
         <div className='event-artists'>
         <ul>

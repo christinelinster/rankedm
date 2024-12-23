@@ -85,6 +85,10 @@ form {
     box-shadow: none;
     margin-bottom: 30px;
   }
+
+input:focus::placeholder {
+    color: transparent;
+  }
   
   button[type="submit"] {
     margin-top: 30px;

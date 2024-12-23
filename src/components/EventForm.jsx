@@ -65,14 +65,17 @@ return(
           </label>
         </div>
         <div className="item item-4">
+          {/* NEED TO LIMIT NUMBER TO 1 DECIMAL */}
           <label>
             Rating
             <input
               type="number"
               placeholder="0"
-              max="10.0"
+              min="0.0"
+              max="5.0"
               value={rating}
               name="rating"
+              pattern="[0-9]"
               onChange={(e) => setRating(e.target.value)}
             />
           </label>
@@ -89,6 +92,7 @@ return(
               onChange={(e) => handleArtistChange(index, e.target.value)}
             />
           ))}
+          {/* NEED TO MAKE IT SO BUTTON DOESNT DISAPPEAR WITH ADDITONAL ARTISTS */}
           <button className="add-person" type="button" onClick={addArtist}>
             + Add Artist
           </button>
