@@ -2,7 +2,7 @@ import { useState } from "react";
 import CustomDateInput from "./CustomDateInput";
 import "../EventForm.css";
 
-function EventForm(){
+function EventForm(props){
     const [eventName, setEventName] = useState("");
     const [eventDate, setEventDate] = useState("");
     const [location, setLocation] = useState("");
@@ -18,20 +18,19 @@ function EventForm(){
     newArtists[index] = value;
     setArtists(newArtists);
 }
-    
 
-    function handleSubmit(e){
-        e.preventDefault();
-        const eventData = {
+function handleSubmit(e) {
+  e.preventDefault();
+  const eventData = {
       eventName,
       eventDate,
       location,
       rating,
       artists: artists.filter((artist) => artist.trim() !== "")
-        };
-
-        console.log(eventData);
-    }
+  };
+  console.log(eventData);
+  props.onSubmit(eventData);
+}
 
 return(
     <form onSubmit={handleSubmit}>
@@ -42,6 +41,7 @@ return(
             type="text"
             placeholder="Event Name"
             value={eventName}
+            name="event-name"
             onChange={(e) => setEventName(e.target.value)}
           />
           </div>
@@ -59,6 +59,7 @@ return(
               type="text"
               placeholder="Location"
               value={location}
+              name="location"
               onChange={(e) => setLocation(e.target.value)}
             />
           </label>
@@ -71,6 +72,7 @@ return(
               placeholder="0"
               max="10.0"
               value={rating}
+              name="rating"
               onChange={(e) => setRating(e.target.value)}
             />
           </label>
@@ -83,6 +85,7 @@ return(
               type="text"
               placeholder="Name"
               value={artist}
+              name="artist"
               onChange={(e) => handleArtistChange(index, e.target.value)}
             />
           ))}
@@ -100,5 +103,4 @@ return(
 )
 
 }
-
 export default EventForm;
