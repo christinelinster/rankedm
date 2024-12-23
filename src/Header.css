@@ -1,0 +1,48 @@
+header {
+    position: fixed;
+    top: 0;
+    background-color: #222;
+    margin: 0 auto;
+    width: 100%;
+    z-index: 1000;
+    padding: 2rem 5rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    column-gap: 2rem;
+  }
+  
+  header div {
+    margin: auto 0;
+  }
+  
+  header div h1 {
+    color: #ffa27f;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+  }
+  
+  header div p {
+    color: #d7cfcf;
+    font-family: "Bungee Inline", sans-serif;
+    font-size: 1rem;
+  }
+  
+  header div .new-event {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+  }
+  
+  header div .new-event {
+    background-color: #ffa27f;
+  }
+  
+  header div .new-event:hover {
+    background-color: #d7cfcf;
+    color: #857a6b;
+  }
