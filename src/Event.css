@@ -1,0 +1,58 @@
+
+.card{
+display: flex;
+flex-direction: column;
+background-color: #fff;
+width: fit-content;
+padding: 30px 24px;
+border-radius: 12px;
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+}
+
+.event-info{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+
+}
+
+h1.event-heading{
+    font-family: "Inter", sans-serif;
+    font-size: 1.25rem; 
+
+}
+
+p.event-detail{
+    font-size: 0.8rem;
+    color: #828282;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    margin-left: -2px;
+}
+
+.event-rating{
+    width: 4rem;
+    height: 4rem;
+    border-radius:50%;
+    border: 3px solid #97BE5A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #527853;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.event-artists{
+    padding: 30px 20px 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }

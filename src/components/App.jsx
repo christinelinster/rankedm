@@ -2,11 +2,13 @@ import { useState } from "react";
 import Header from "./Header";
 import Modal from "./Modal";
 import EventForm from "./EventForm";
+import Event from "./Event";
 import "../main.css";
 
 function App(){
 
     const [showModal, setShowModal] = useState(false);
+
 
     function openModal(){
         setShowModal(true);
@@ -22,6 +24,11 @@ function App(){
         <Modal show={showModal} onClose={closeModal}> 
             <EventForm/>
         </Modal>
+        <div className="event-list">
+        
+        <Event/>
+        </div>
+        
         </div>
     )
 }

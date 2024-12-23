@@ -1,6 +1,5 @@
 import { useState } from "react";
 import CustomDateInput from "./CustomDateInput";
-import AddArtist from "./AddArtist";
 import "../EventForm.css";
 
 function EventForm(){
@@ -8,22 +7,27 @@ function EventForm(){
     const [eventDate, setEventDate] = useState("");
     const [location, setLocation] = useState("");
     const [rating, setRating] = useState("");
-    const [artists, setArtists] = useState([]);
+    const [artists, setArtists] = useState([""]);
 
-    function addArtist(newArtist){
-      setArtists((prevArtists)=>{
-        return [...prevArtists, newArtist]
-      })
-  }
+    function addArtist(){
+      setArtists([...artists, ""]);
+    };
+
+  function handleArtistChange(index, value){
+    const newArtists = [...artists];
+    newArtists[index] = value;
+    setArtists(newArtists);
+}
     
 
     function handleSubmit(e){
         e.preventDefault();
         const eventData = {
-            eventDate,
+      eventName,
+      eventDate,
       location,
       rating,
-      artists
+      artists: artists.filter((artist) => artist.trim() !== "")
         };
 
         console.log(eventData);
@@ -73,15 +77,15 @@ return(
         </div>
         <div className="item item-5">
           <label>Artists</label>
-          <AddArtist/>
-          {artists.map((artist,index)=>{
-            return(
-              <AddArtist
+          {artists.map((artist, index) => (
+            <input
               key={index}
-              value ={artist}
-              />
-            )
-          })}
+              type="text"
+              placeholder="Name"
+              value={artist}
+              onChange={(e) => handleArtistChange(index, e.target.value)}
+            />
+          ))}
           <button className="add-person" type="button" onClick={addArtist}>
             + Add Artist
           </button>
