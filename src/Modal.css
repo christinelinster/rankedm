@@ -20,6 +20,7 @@
     position: relative;
     width: 60%;
     height: 75%;
+    overflow: hidden;
   }
   
   .close-button {
